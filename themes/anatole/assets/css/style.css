@@ -177,15 +177,21 @@ a:active {
 /*animation ends*/
 .content {
     height: auto;
-    float: right;
-    width: 60%;
+    /* float: right;
+    width: 100%; */
     margin-top: 60px;
+    width: 60%;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .page-top {
     width: 60%;
     position: fixed;
-    right: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    /* right: 0; */
     z-index: 3;
     background-color: var(--bg-color);
     height: 60px;
@@ -262,9 +268,9 @@ a:active {
     height: 100%;
     top: 0;
     left: 0;
-    position: fixed;
+    /* position: fixed; */
     z-index: 4;
-    border-right: 1px solid var(--border-color);
+    /* border-right: 1px solid var(--border-color); */
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -855,7 +861,7 @@ print {
     }
 
     .content {
-        margin-top: 420px;
+        /* margin-top: 420px; */
         width: 100%;
         z-index: 2;
         position: absolute;
@@ -1020,9 +1026,9 @@ print {
     min-height: 35px;
 }
 .form-style ul li .field-style {
-    box-sizing: border-box; 
+    box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; 
+    -moz-box-sizing: border-box;
     font-size: 14px;
     padding: 8px;
     outline: none;
@@ -1053,7 +1059,7 @@ print {
     width: 100%;
     height: auto;
 }
-.form-style ul li input[type="button"], 
+.form-style ul li input[type="button"],
 .form-style ul li input[type="submit"] {
     background-color: var(--bg-color);
     border: 1px solid var(--form-border-color);
@@ -1063,7 +1069,7 @@ print {
     text-decoration: none;
     width: 100%;
 }
-.form-style ul li input[type="button"]:hover, 
+.form-style ul li input[type="button"]:hover,
 .form-style ul li input[type="submit"]:hover {
     background-color: var(--bg-color);
     border: 1px solid var(--form-button-hover-border-color);
