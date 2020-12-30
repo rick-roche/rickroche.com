@@ -88,7 +88,7 @@ enableEmoji = true
       [languages.en.params.search]
         enable = true
         # type of search engine ("lunr", "algolia")
-        type = "algolia"
+        type = "lunr"
         # max index length of the chunked content
         contentLength = 4000
         # placeholder of the search bar
@@ -212,7 +212,6 @@ enableEmoji = true
   # date format
   dateFormat = "2006-01-02"
   # website images for Open Graph and Twitter Cards
-  # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/logo.png"]
 
   # Header config
