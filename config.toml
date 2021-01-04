@@ -115,7 +115,7 @@ enableEmoji = true
           # Gravatar Email for preferred avatar in home page
           gravatarEmail = ""
           # URL of avatar shown in home page
-          avatarURL = "/images/profile.jpg"
+          avatarURL = "/images/avatar.png"
           # title shown in home page (HTML format is supported)
           title = "Richard \"Rick\" Roché"
           # subtitle shown in home page
@@ -234,14 +234,11 @@ enableEmoji = true
       typeit = true
 
   # Footer config
-  # 页面底部信息配置
   [params.footer]
     enable = true
     # Custom content (HTML format is supported)
-    # 自定义内容 (支持 HTML 格式)
     custom = ''
     # whether to show Hugo and theme info
-    # 是否显示 Hugo 和主题信息
     hugo = true
     # whether to show copyright info
     copyright = true
@@ -326,7 +323,6 @@ enableEmoji = true
       # style for the dark theme
       darkStyle = "mapbox://styles/mapbox/dark-v10?optimize=true"
       # whether to add NavigationControl (https://docs.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
-      # 是否添加 NavigationControl (https://docs.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
       navigation = true
       # whether to add GeolocateControl (https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
       geolocate = true
@@ -398,11 +394,6 @@ enableEmoji = true
         # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
         # located in "themes/LoveIt/assets/data/emoji/" directory
         # you can store your own data files in the same path under your project:
-        # "assets/data/emoji/"
-        # emoji 数据文件名称, 默认是 "google.yml"
-        # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-        # 位于 "themes/LoveIt/assets/data/emoji/" 目录
-        # 可以在你的项目下相同路径存放你自己的数据文件:
         # "assets/data/emoji/"
         emoji = ""
       # Facebook comment config (https://developers.facebook.com/docs/plugins/comments)
@@ -494,7 +485,6 @@ enableEmoji = true
   [params.cookieconsent]
     enable = false
     # text strings used for Cookie consent banner
-    # 用于 Cookie 许可横幅的文本字符串
     [params.cookieconsent.content]
       message = ""
       dismiss = ""
@@ -517,14 +507,11 @@ enableEmoji = true
   # Compatibility config
   [params.compatibility]
     # whether to use Polyfill.io to be compatible with older browsers
-    # 是否使用 Polyfill.io 来兼容旧式浏览器
     polyfill = false
     # whether to use object-fit-images to be compatible with older browsers
-    # 是否使用 object-fit-images 来兼容旧式浏览器
     objectFit = false
 
 # Markup related configuration in Hugo
-# Hugo 解析文档的配置
 [markup]
   # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
   # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
@@ -537,7 +524,6 @@ enableEmoji = true
     # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
   # Goldmark is from Hugo 0.60 the default library used for Markdown
-  # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
@@ -549,10 +535,8 @@ enableEmoji = true
       typographer = true
     [markup.goldmark.renderer]
       # whether to use HTML tags directly in the document
-      # 是否在文档中直接使用 HTML 标签
       unsafe = true
   # Table Of Contents settings
-  # 目录设置
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 6
@@ -571,9 +555,7 @@ enableEmoji = true
 
 # Permalinks config (https://gohugo.io/content-management/urls/#permalinks)
 [Permalinks]
-#   posts = ":year/:month/:filename"
   posts = "/:year/:month/:slug/"
-#   posts = ":filename"
 
 # Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
