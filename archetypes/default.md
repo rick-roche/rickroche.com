@@ -1,8 +1,26 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .TranslationBaseName "-" " " | title }}"
+subtitle: ""
 date: {{ .Date }}
+lastmod: {{ .Date }}
+draft: true
+description: ""
+
 tags: []
 categories: []
-description: ""
-draft: true
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+
+featuredImage: ""
+featuredImagePreview: ""
+
+toc:
+  enable: true
+math:
+  enable: false
+lightgallery: false
+license: ""
 ---
+
+<!--more-->
