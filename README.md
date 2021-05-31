@@ -17,5 +17,6 @@ hugo new posts/000x-post-name/index.md
 To test locally run the following
 
 ```sh
+git submodule update --init --recursive
 hugo server --buildDrafts
 ```
