@@ -3,7 +3,7 @@ title: "Azure Pipelines and Dependabot"
 subtitle: ""
 date: 2021-05-31T11:21:36+02:00
 lastmod: 2021-05-31T11:21:36+02:00
-draft: true
+draft: false
 description: "Keeping dependencies up to date using Dependabot and Azure Pipelines"
 
 tags: ["dependabot", "dependencies", "azure pipelines", "azure devops"]
