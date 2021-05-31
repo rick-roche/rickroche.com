@@ -35,7 +35,7 @@ It can also be quite a boring activity and can be time consuming for a team main
 
 ## Dependabot?
 
-[Dependabot](https://dependabot.com/) creates pull requests on your repos with the dependencies you should update. Read about [How it works](https://dependabot.com/#how-it-works) but in a nutshell
+[Dependabot](https://dependabot.com/) creates pull requests on your repos with the dependencies you should update. You can read about [how it works](https://dependabot.com/#how-it-works); but in a nutshell
 - it checks for updates of your dependencies
 - it opens up a pull request on your repo
 - you review the PR and merge
@@ -44,9 +44,9 @@ This is an awesome tool to save you time and I find it makes keeping your depend
 
 ## Integration with Azure Pipelines
 
-Dependabot is baked into the [Github ecosystem](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) and really easy to use there. Recently I needed to solve this problem on a project in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) using [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) and thought I would share my solution.
+Dependabot is baked into the [GitHub ecosystem](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) and really easy to use there. Recently I needed to solve this problem on a project in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) using [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) and thought I would share my solution.
 
-Search the [Azure DevOps Extension Marketplace](https://marketplace.visualstudio.com/) for Dependabot and you will find [this extension](https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot) made by [Tingle Software](https://tingle.software/). It is always great to find extensions to speed up integration and I gave this one a whirl.
+If you search the [Azure DevOps Extension Marketplace](https://marketplace.visualstudio.com/) for Dependabot you will find [this extension](https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot) made by [Tingle Software](https://tingle.software/). It is always great to find extensions to speed up integration and I gave this one a whirl.
 
 The extension is feature rich and works really well with little configuration required. Simply adding the below to an Azure Pipeline, running it and you will end up with a host of PR's!
 
@@ -69,7 +69,7 @@ stages:
               setAutoComplete: true # Saves us one click, once our PR policies pass, the update will merge
 ```
 
-Have a look at all the [Task Parameters](https://github.com/tinglesoftware/dependabot-azure-devops/blob/main/src/extension/README.md#task-parameters) that the extension supports to fine tune your implementation.
+Have a look at all the [Task Parameters](https://github.com/tinglesoftware/dependabot-azure-devops/blob/main/src/extension/README.md#task-parameters) that the extension supports to fine tune your implementation. The above checks for `nuget` dependencies on the `main` branch, limits the number of PR's raise to be 10 and sets the PR to autocomplete (letting our branch policies and PR validation pipelines perform all their checks).
 
 ### Work Item Linking
 
@@ -79,7 +79,7 @@ In the project I'm working in we have a policy set on all PR's to ensure they ar
 In the upcoming 0.5 release of the extension, the `workItemId` parameter has been [renamed](https://github.com/tinglesoftware/dependabot-azure-devops/pull/130) to `milestone` so please be on the look out for this change!
 {{< /admonition >}}
 
-The Microsoft team have an [extension for creating work items](https://marketplace.visualstudio.com/items?itemName=mspremier.CreateWorkItem) which is really configurable. For my teams workflow, we wanted to have a User Story on our board with all the PR's linked to it. We also didn't want the pipeline creating duplicate User Stories every time it runs if we already had one open that we are working on. After a bit of trial and error, adding the below step to the pipeline gave us the desired result
+The Microsoft team have an [extension for creating work items](https://marketplace.visualstudio.com/items?itemName=mspremier.CreateWorkItem) which is really configurable. For my teams workflow, we wanted to have a User Story on our board with all the PR's linked to it. We also didn't want the pipeline creating duplicate User Stories every time it runs if we already had one open that we are working on. After a bit of trial and error, adding the below to the pipeline gave us the desired result.
 
 ```yaml
 - task: CreateWorkItem@1
@@ -102,6 +102,15 @@ The Microsoft team have an [extension for creating work items](https://marketpla
     createOutputs: true
     outputVariables: |
       workItemId=ID
+
+- task: dependabot@1
+  displayName: 'Run Dependabot'
+  inputs:
+    packageManager: 'nuget'
+    targetBranch: 'main'
+    openPullRequestsLimit: 10
+    workItemId: $(workItemId) # This uses the output from the above as the work item to link the PR's to
+    setAutoComplete: true
 ```
 
 ### Docker Caching
