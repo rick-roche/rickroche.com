@@ -27,7 +27,7 @@ I wanted to create a super simple website that is easy to maintain and easy to a
 
 <!--more-->
 
-My searches started looking around for static website generators (I was hoping that I could run this without a database and all that jazz that normally gets dragged along) and stumbled upon [Hugo](https://gohugo.io/) whose [Github README](https://github.com/gohugoio/hugo) describes it as 
+My searches started looking around for static website generators (I was hoping that I could run this without a database and all that jazz that normally gets dragged along) and stumbled upon [Hugo](https://gohugo.io/) whose [GitHub README](https://github.com/gohugoio/hugo) describes it as 
 
 > A Fast and Flexible Static Site Generator built with love by [bep](https://github.com/bep), [spf13](http://spf13.com/) and [friends](https://github.com/gohugoio/hugo/graphs/contributors) in [Go](https://golang.org/).
 
