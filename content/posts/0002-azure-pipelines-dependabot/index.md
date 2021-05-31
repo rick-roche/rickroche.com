@@ -29,7 +29,7 @@ Keeping your dependencies up to date in a project is a really easy way to try an
 - Awesome new features!
 - Bug fixes!
 
-It can also be quite a boring activity and can be time consuming for a team maintaining the project to run updates regularly into production. Fortunately tools like [Dependabot](https://dependabot.com/) exist!
+It can also be quite a boring activity and can be time-consuming for a team maintaining the project to run updates regularly into production. Fortunately tools like [Dependabot](https://dependabot.com/) exist!
 
 <!--more-->
 
@@ -48,7 +48,7 @@ Dependabot is baked into the [GitHub ecosystem](https://docs.github.com/en/code-
 
 If you search the [Azure DevOps Extension Marketplace](https://marketplace.visualstudio.com/) for Dependabot you will find [this extension](https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot) made by [Tingle Software](https://tingle.software/). It is always great to find extensions to speed up integration and I gave this one a whirl.
 
-The extension is feature rich and works really well with little configuration required. Simply adding the below to an Azure Pipeline, running it and you will end up with a host of PR's!
+The extension is feature rich and works really well with little configuration required. Simply add the below to an Azure Pipeline and run it, and you'll end up with a host of PR's!
 
 ```yaml
 stages:
@@ -131,7 +131,7 @@ The caching tasks can look a bit confusing, breaking it down you need 3 parts:
   displayName: Cache Docker images
 ```
 
-This checks if there is a cached version of the image to be used. If yes, `DOCKER_CACHE_HIT` is set to `true`. otherwise `false`.
+This checks if there is a cached version of the image to be used. If yes, `DOCKER_CACHE_HIT` is set to `true`, otherwise `false`.
 
 ```yaml
 - script: |
@@ -155,7 +155,7 @@ If we do not have a cached version of the image we need to pull it down from Doc
 
 ## Finishing up
 
-We have a pipeline that runs on a schedule, running all of the above together. A complete example can be found on Github [here](https://gist.github.com/rick-roche/c083ba72e9acd7635cff3c2757ee04bf).
+We have a pipeline that runs on a schedule, running all the above steps together. A complete example can be found on GitHub [here](https://gist.github.com/rick-roche/c083ba72e9acd7635cff3c2757ee04bf).
 
 ```yaml
 schedules:
