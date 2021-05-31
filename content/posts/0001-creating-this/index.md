@@ -3,7 +3,7 @@ title: "Creating This Website"
 subtitle: ""
 date: 2021-01-04T14:05:53+02:00
 lastmod: 2021-01-04T20:31:53+02:00
-draft: true
+draft: false
 description: "How I setup this website and deployed to production"
 
 tags: ["web", "hugo", "netlify"]
