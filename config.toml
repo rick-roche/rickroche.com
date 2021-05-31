@@ -58,12 +58,12 @@ enableEmoji = true
         title = ""
         weight = 5
       [[languages.en.menu.main]]
-        identifier = "gitlab"
-        pre = "<i class='fab fa-gitlab fa-fw'></i>"
+        identifier = "github"
+        pre = "<i class='fab fa-github fa-fw'></i>"
         post = ""
         name = ""
-        url = "https://gitlab.com/rick-roche"
-        title = "GitLab"
+        url = "https://github.com/rick-roche"
+        title = "GitHub"
         weight = 6
     [languages.en.params]
       # site description
@@ -133,14 +133,14 @@ enableEmoji = true
           paginate = 6
       # Social config in home page
       [languages.en.params.social]
-        GitHub = ""
         Linkedin = "richardjroche"
+        GitHub = "rick-roche"
         Twitter = ""
         Instagram = ""
         Facebook = ""
         Telegram = ""
         Medium = ""
-        Gitlab = "rick-roche"
+        Gitlab = ""
         Youtubelegacy = ""
         Youtubecustom = ""
         Youtubechannel = ""
@@ -300,7 +300,7 @@ enableEmoji = true
       # whether to show the copy button of the code block
       copy = true
       # the maximum number of lines of displayed code by default
-      maxShownLines = 10
+      maxShownLines = 50
     # KaTeX mathematical formulas config (KaTeX https://katex.org/)
     [params.page.math]
       enable = false

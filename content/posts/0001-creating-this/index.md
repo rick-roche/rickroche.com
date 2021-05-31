@@ -37,9 +37,9 @@ After reading [How to start a blog using Hugo](https://flaviocopes.com/start-blo
 
 ## The basics
 
-With my initial investigations running on my local machine, the time for continuous deployment had arrived! First step: Get the code into version control... For me this means creating repo on [GitLab](https://gitlab.com/) (I love GitLab) and pushing my initial code to [`main`](https://boleary.dev/blog/2020-06-11-change-your-default-branch.html).
+With my initial investigations running on my local machine, the time for continuous deployment had arrived! First step: Get the code into version control... For me this means creating repo on [GitHub](https://github.com/) and pushing my initial code to [`main`](https://stevenmortimer.com/5-steps-to-change-github-default-branch-from-master-to-main/).
 
-For the deployment of the website I decided to use [Netlify](https://www.netlify.com/). It's awesome and has a great developer experience - essentially add the site, linking your repo on Gitlab (or other supported version control), Hugo gets picked up automagically and after hitting Deploy Site! you will be up and running in less than a minute. There is a [Step-by-Step Guide](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/) to get you on your way if you get stuck.
+For the deployment of the website I decided to use [Netlify](https://www.netlify.com/). It's awesome and has a great developer experience - essentially add the site, linking your repo on GitHub (or other supported version control), Hugo gets picked up automagically and after hitting Deploy Site! you will be up and running in less than a minute. There is a [Step-by-Step Guide](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/) to get you on your way if you get stuck.
 
 I gave my site a nice name (`rick-roche`) to test using [rick-roche.netlify.app](https://rick-roche.netlify.app) immediately and pointed my domain to the Netlify name servers (DNS propagation time can take up to 72 hours) for this site to be live.
 
@@ -47,7 +47,7 @@ I gave my site a nice name (`rick-roche`) to test using [rick-roche.netlify.app]
 
 There were a few features I was looking for such as search, extended markdown for adding copyable code snippets and the ability to add tips and notes like I am used to doing when using Confluence for work. I found the [LoveIt](https://themes.gohugo.io/loveit/) theme while browsing through the [Hugo Themes](https://themes.gohugo.io/) which had everything I was looking for. 
 
-A few updates later (LoveIt has a lot of configurable options), code pushed to Gitlab and an automatic deployment thanks to Netlify and you are looking at the results. 
+A few updates later (LoveIt has a lot of configurable options), code pushed to GitHub and an automatic deployment thanks to Netlify and you are looking at the results. 
 
 Allowing Hugo and Netlify to do the heavy lifting I have ended up with a website that
 - uses an open-source web framework (I like to be able to see the code)
