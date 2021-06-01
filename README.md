@@ -6,7 +6,9 @@ My personal website
 
 ## Adding content
 
-Ensure you have [Hugo installed](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
+Ensure you have installed
+- [Hugo](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
+- [Netlify Dev](https://www.netlify.com/products/dev/#how-it-works)
 
 To [add a new post](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
 
@@ -19,4 +21,10 @@ To test locally run the following
 ```sh
 git submodule update --init --recursive
 hugo server --buildDrafts
+```
+
+or
+
+```sh
+netlify dev
 ```
