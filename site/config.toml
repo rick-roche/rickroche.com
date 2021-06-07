@@ -4,7 +4,7 @@ title = "Rick Roché"
 enableRobotsTXT = true
 enableGitInfo = false
 enableEmoji = true
-canonifyURLs = true
+# canonifyURLs = true
 
 [languages]
   [languages.en]
