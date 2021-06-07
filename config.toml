@@ -4,6 +4,7 @@ title = "Rick Roché"
 enableRobotsTXT = true
 enableGitInfo = false
 enableEmoji = true
+canonifyURLs = true
 
 [languages]
   [languages.en]
@@ -16,8 +17,6 @@ enableEmoji = true
     hasCJKLanguage = false
     # default amount of posts in each pages
     paginate = 12
-    # [UA-XXXXXXXX-X] google analytics code
-    googleAnalytics = ""
     # copyright description used only for seo schema
     copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
     # Menu config
@@ -67,9 +66,9 @@ enableEmoji = true
         weight = 6
     [languages.en.params]
       # site description
-      description = "Richard Rick Roché; Software Engineer, Solutions Architect, Hiking Enthusiast"
+      description = "Richard Rick Roché; Software Engineer, Solutions Architect, Hiking Enthusiast. A blog mainly about software engineering and software architecture."
       # site keywords
-      keywords = ["Blog", "Software", "Rick Roche"]
+      keywords = ["blog", "software", "engineering", "architecture", "Rick Roche"]
       # App icon config
       [languages.en.params.app]
         # optional site title override for the app when added to an iOS home screen or Android launcher
@@ -203,7 +202,10 @@ enableEmoji = true
 [params]
   # LoveIt theme version
   version = "0.2.X"
-  # site default theme ("light", "dark", "auto")
+  # site description
+  description = "Richard Rick Roché; Software Engineer, Solutions Architect, Hiking Enthusiast. A blog mainly about software engineering and software architecture."
+  # site keywords
+  keywords = ["blog", "software", "engineering", "architecture", "Rick Roche"]
   defaultTheme = "dark"
   # public git repo url only then enableGitInfo is true
   # gitRepo = "https://github.com/dillonzq/LoveIt"
@@ -559,9 +561,6 @@ enableEmoji = true
 
 # Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
-  # privacy of the Google Analytics (replaced by params.analytics.google)
-  [privacy.googleAnalytics]
-    # ...
   [privacy.twitter]
     enableDNT = true
   [privacy.youtube]
@@ -585,3 +584,9 @@ enableEmoji = true
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   taxonomyTerm = ["HTML"]
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  expiryDate = ["expiryDate"]
+  lastmod = [":git", "lastmod", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
