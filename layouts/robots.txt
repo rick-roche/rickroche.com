@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /404/ #block access to 404 page
+
+Sitemap: {{ "/sitemap.xml" | absLangURL }}
