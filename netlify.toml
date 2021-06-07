@@ -1,4 +1,5 @@
 [build]
+base = "site/"
 publish = "public"
 command = "hugo --gc --minify -b https://www.rickroche.com/"
 
@@ -8,13 +9,22 @@ HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview]
+base = "site/"
 command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.83.1"
 
 [context.branch-deploy]
+base = "site/"
 command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
 HUGO_VERSION = "0.83.1"
+
+[dev]
+base = "site/"
+framework = "#custom"
+command = "hugo -s site/ server --buildDrafts --buildFuture -b http://localhost:8888  -w"
+port = 8888
+targetPort = 1313
