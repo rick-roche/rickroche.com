@@ -1,4 +1,5 @@
 {{- $params := .Page.Params | merge .Site.Params.Page | merge (dict "author" .Site.Author.name) -}}
+{{- $links := .Page.Permalink -}}
 <item>
     <title>
         {{- .Page.Title -}}
@@ -19,7 +20,7 @@
         {{- "<![CDATA[" | safeHTML -}}
         {{- with $params.featuredimage -}}
             <div class="featured-image">
-                <img src="{{ . | absURL }}" referrerpolicy="no-referrer">
+                <img src="{{ $links }}{{ . }}" referrerpolicy="no-referrer">
             </div>
         {{- end -}}
         {{- $content := .Page.Description -}}
