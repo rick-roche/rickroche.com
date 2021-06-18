@@ -4,7 +4,7 @@ subtitle: "Keeping dependencies up to date using Dependabot and Azure Pipelines"
 date: 2021-05-31T11:21:36+02:00
 lastmod: 2021-06-01
 draft: false
-description: "Keeping dependencies up to date using Dependabot and Azure Pipelines this is my description"
+description: "Keeping dependencies up to date using Dependabot and Azure Pipelines"
 
 tags: ["dependabot", "dependencies", "azure", "devops", "azure pipelines", "azure devops"]
 categories: ["software"]
