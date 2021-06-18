@@ -1,7 +1,7 @@
 ---
 title: "Migrating Azure ARM templates to Bicep"
 subtitle: "How to migrate from Azure ARM templates to Bicep templates that have no errors and don't contain any warnings or linting issues!"
-date: 2021-06-19T09:00:00+02:00
+date: 2021-06-18T09:00:00+02:00
 lastmod: 2021-06-17T11:13:20+02:00
 draft: false
 description: "You may have heard of Bicep, and you may be wondering how much effort it is going to take to move all your ARM templates to this new way of deploying Azure resources. I gave migrating from ARM to Bicep a go. This post will cover going from JSON ARM templates to shiny new Bicep templates that have no errors and don't contain any warnings or linting issues!"
@@ -55,6 +55,8 @@ This creates a `azuredeploy.bicep` file in the same directory. Depending on your
 > You may need to fix warnings and errors in the generated bicep file(s), or decompilation may fail entirely if an accurate conversion is not possible.
 > If you would like to report any issues or inaccurate conversions, please see https://github.com/Azure/bicep/issues.
 
+**It is important to note that the migration from ARM to Bicep will highlight issues in your ARM templates. ARM was more forgiving in certain aspects, after the migration, your templates will be in a better state.**
+
 Errors come in the form of `Error BCPXXX: Description` and the descriptions generally let you get to the root of the problem quickly. E.g. *Error BCP037: The property "location" is not allowed on objects of type "Microsoft.EventHub/namespaces/eventhubs". Permissible properties include "dependsOn".*
 
 If the decompilation gives you any errors, my preferred approach is to fix the ARM template and then run the decompilation again until you get a "clean" decompilation (warnings are fine, just ensure you decompile with no errors).
@@ -64,6 +66,7 @@ Warnings come in two flavours, ones that have a code (*Warning BCPXXX*) and ones
 ## Common errors and how to fix them
 
 ### User defined functions are not supported (BCP007, BCP057)
+
 If you have created user defined functions in ARM, these will not be decompiled (follow the [issue](https://github.com/Azure/bicep/issues/2)) and you will get two cryptic errors
 > Error BCP007: This declaration type is not recognized. Specify a parameter, variable, resource, or output declaration.
 
@@ -72,7 +75,8 @@ If you have created user defined functions in ARM, these will not be decompiled 
 **To fix, move the function logic into your template (this may require duplication, but can be neatened up in the Bicep template later)**
 
 ### Nested dependsOn (BCP034)
-Sometimes the use of nested `dependsOn` properties in your templates gets weird with Bicep. The ARM version would have validated and deployed perfectly fine however you will get the following error when decompiling to Bicep.
+
+Sometimes the use of nested `dependsOn` properties in your ARM templates gets weird with Bicep (`dependsOn` can often be [removed entirely](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/compare-template-syntax#resource-dependencies "Bicep Resource dependencies") in Bicep). The ARM version would have validated and deployed perfectly fine however you will get the following error when decompiling to Bicep.
 
 > Error BCP034: The enclosing array expected an item of type "module[] | (resource | module) | resource[]", but the provided item was of type "string".
 
@@ -80,7 +84,7 @@ Fortunately [Bicep handles dependencies](https://docs.microsoft.com/en-us/azure/
 
 > For Bicep, you can set an explicit dependency but this approach isn't recommended. Instead, rely on implicit dependencies. An implicit dependency is created when one resource declaration references the identifier of another resource.
 
-**To fix, delete your nested dependencies and validate**
+**To fix, delete your nested dependencies and validate (consider removing your `dependsOn` references entirely)**
 
 ### Strict schema validation (BCP037, BCP073)
 Bicep validates the schema of each resource much more diligently than ARM. As a result you will probably find a bunch of places where you have added properties like `location` or `tags` to a resource that doesn't support them and ARM didn't mind this. These will be expressed as `Error BCP037`.
@@ -101,7 +105,7 @@ Another common error I encountered was having read-only parameters in my templat
 
 ### Reserved words as parameters (BCP079)
 
-In ARM you can have the same name for a parameter, variable, function etc as these are all addressed directly using `parameters('name')` or `variables('name')` etc. In Bicep the syntax is simplified and as such you will get errors if you have used a reserved word as a parameter. We had a couple of templates taking in a parameter called `description` resulting in a cryptic error message:
+In ARM templates you can have the same name for a parameter, variable, function etc as these are all addressed directly using `parameters('name')` or `variables('name')` etc. In Bicep the syntax is simplified and as such you will get errors if you have used a reserved word as a parameter. We had a couple of templates taking in a parameter called `description` resulting in a cryptic error message:
 
 > Error BCP079: This expression is referencing its own declaration, which is not allowed.
 
@@ -143,11 +147,11 @@ I did find an instance where the Bicep template matches the schema perfectly how
 
 > Warning prefer-interpolation: Use string interpolation instead of the concat function. [https://aka.ms/bicep/linter/prefer-interpolation]
 
-To fix, search for all usages of `concat` and replace with the new syntax: `'string-${var}'`.
+**To fix, search for all usages of `concat` and replace with the new syntax: `'string-${var}'`.**
 
 > Warning simplify-interpolation: Remove unnecessary string interpolation. [https://aka.ms/bicep/linter/simplify-interpolation]
 
-To fix, remove the `${}` and reference the variable directly. E.g. `'${variable}'` becomes `variable`.
+**To fix, remove the `${}` and reference the variable directly. E.g. `'${variable}'` becomes `variable`.**
 
 ### Environment URLs
 
@@ -155,7 +159,7 @@ We had a lot of hardcoded URL's in our templates for storage suffixes, front doo
 
 > Warning no-hardcoded-env-urls: Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds. Found this disallowed host: "core.windows.net" [https://aka.ms/bicep/linter/no-hardcoded-env-urls]
 
-To fix, have a look at all the [URLs that the environment function provides](https://docs.microsoft.com/en-za/azure/azure-resource-manager/templates/template-functions-deployment?tabs=json#environment "Environment Template Function") and replace your hard-coded version with `environment().<property>`. 
+**To fix, have a look at all the [URLs that the environment function provides](https://docs.microsoft.com/en-za/azure/azure-resource-manager/templates/template-functions-deployment?tabs=json#environment "Environment Template Function") and replace your hard-coded version with `environment().<property>`. **
 
 E.g. for Azure Storage where `core.windows.net` had been hard coded, replacing with `environment().suffixes.storage` gives the desired result.
 
@@ -213,7 +217,7 @@ resource functionAppLogAnalytics 'microsoft.insights/diagnosticSettings@2017-05-
 
 ## Should you migrate?
 
-A resounding yes from me! The process above goes quite quickly, and I was on shiny new Bicep templates in less than an hour. Bicep is a much friendlier syntax to work with and the IDE support is great. 
+A resounding yes from me! The process above goes quite quickly, and I was on shiny new Bicep templates in less than an hour. Bicep is a much friendlier syntax to work with and the IDE support is great. What I also enjoyed is cleaning up all the errors that were present in my ARM templates that would have remained if not for the migration.
 
 There is a neat comparison of ARM syntax vs Bicep syntax here which highlights a lot of the constructs that become simpler as well: https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/compare-template-syntax
 
