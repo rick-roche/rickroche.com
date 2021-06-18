@@ -2,3 +2,4 @@ content/posts/*.md
 !_index.md
 public/
 .netlify
+thoughts/
