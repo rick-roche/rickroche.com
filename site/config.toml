@@ -214,7 +214,7 @@ enableEmoji = true
   # date format
   dateFormat = "2006-01-02"
   # website images for Open Graph and Twitter Cards
-  images = ["/logo.png"]
+  images = ["/images/avatar.png"]
 
   # Header config
   [params.header]
