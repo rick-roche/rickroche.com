@@ -13,14 +13,14 @@ hiddenFromHomePage: false
 hiddenFromSearch: false
 
 featuredImage: "migrating-to-bicep.png"
-featuredImagePreview: ""
+featuredImagePreview: "migrating-to-bicep.png"
+images: ["migrating-to-bicep.png"]
 
 toc:
   enable: true
 math:
   enable: false
 lightgallery: false
-license: ""
 ---
 
 You may have heard of [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview "What is Bicep?"), and you may be wondering how much effort it is going to take to move all your ARM templates to this new way of deploying Azure resources.

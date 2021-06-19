@@ -13,14 +13,14 @@ hiddenFromHomePage: false
 hiddenFromSearch: false
 
 featuredImage: "install-website.png"
-featuredImagePreview: ""
+featuredImagePreview: "install-website.png"
+images: ["install-website.png"]
 
 toc:
   enable: true
 math:
   enable: false
 lightgallery: false
-license: ""
 ---
 
 I wanted to create a super simple website that is easy to maintain and easy to add content to. You are reading this on the finished product, here is what makes it tick.
