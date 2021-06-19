@@ -12,9 +12,8 @@ categories: ["software"]
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "dependabot.png"
-featuredImagePreview: "dependabot.png"
-images: ["dependabot.png"]
+featuredImage: "dependabot-cover.png"
+featuredImagePreview: "dependabot-cover.png"
 
 toc:
   enable: true

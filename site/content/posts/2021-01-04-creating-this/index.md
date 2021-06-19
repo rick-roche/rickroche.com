@@ -12,9 +12,8 @@ categories: ["software"]
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "install-website.png"
-featuredImagePreview: "install-website.png"
-images: ["install-website.png"]
+featuredImage: "install-website-cover.png"
+featuredImagePreview: "install-website-cover.png"
 
 toc:
   enable: true

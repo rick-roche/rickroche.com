@@ -12,9 +12,8 @@ categories: ["software"]
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "migrating-to-bicep.png"
-featuredImagePreview: "migrating-to-bicep.png"
-images: ["migrating-to-bicep.png"]
+featuredImage: "migrating-to-bicep-cover.png"
+featuredImagePreview: "migrating-to-bicep-cover.png"
 
 toc:
   enable: true
