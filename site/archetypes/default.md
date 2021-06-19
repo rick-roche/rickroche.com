@@ -7,20 +7,20 @@ draft: true
 description: ""
 
 tags: []
-categories: []
+categories: ["software"]
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
 featuredImage: ""
 featuredImagePreview: ""
+images: []
 
 toc:
   enable: true
 math:
   enable: false
 lightgallery: false
-license: ""
 ---
 
 <!--more-->

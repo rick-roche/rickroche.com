@@ -12,15 +12,14 @@ categories: ["software"]
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "dependabot.png"
-featuredImagePreview: ""
+featuredImage: "dependabot-cover.png"
+featuredImagePreview: "dependabot-cover.png"
 
 toc:
   enable: true
 math:
   enable: false
 lightgallery: false
-license: ""
 ---
 
 Keeping your dependencies up to date in a project is a really easy way to try and keep the software secure. New releases of a dependency often include

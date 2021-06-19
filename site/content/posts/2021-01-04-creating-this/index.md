@@ -12,15 +12,14 @@ categories: ["software"]
 hiddenFromHomePage: false
 hiddenFromSearch: false
 
-featuredImage: "install-website.png"
-featuredImagePreview: ""
+featuredImage: "install-website-cover.png"
+featuredImagePreview: "install-website-cover.png"
 
 toc:
   enable: true
 math:
   enable: false
 lightgallery: false
-license: ""
 ---
 
 I wanted to create a super simple website that is easy to maintain and easy to add content to. You are reading this on the finished product, here is what makes it tick.
