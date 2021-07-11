@@ -1,8 +1,7 @@
 ---
 title: "Bicep Modules: Refactor, Compose, Reuse"
 subtitle: "Lessons learnt by refactoring Bicep templates into reusable modules"
-date: 2021-07-07T20:58:17+02:00
-lastmod: 2021-07-07T20:58:17+02:00
+date: 2021-07-11T13:00:00+02:00
 draft: true
 description: "Bicep introduces the concept of modules to enable template reuse. I took some time out of my day to refactor an application that had been using ARM templates (converted to Bicep templates) to use Bicep modules. This post will cover the things that I learnt by working through that process."
 
