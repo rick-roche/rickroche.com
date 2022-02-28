@@ -60,7 +60,7 @@ Fortunately we already deploy our static web apps using the Standard plan for [$
 
 ## Getting it done!
 
-![C4 Container Diagram](c4-container.png "C4 Container Diagram")
+{{< image src="https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/rick-roche/azure-static-web-apps-sso/main/docs/diagrams/container-webapp.puml" caption="C4 Container Diagram" width=350  >}}
 
 To achieve the desired experience there are a number of components required
 * the static web app (the website)
