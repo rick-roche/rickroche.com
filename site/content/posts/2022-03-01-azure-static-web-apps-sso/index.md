@@ -2,7 +2,7 @@
 title: "Single Sign-On, Azure Static Web Apps and Azure Active Directory"
 subtitle: "Custom auth for a specific AAD tenant, safely in a key vault"
 date: 2022-03-01T12:00:00+02:00
-draft: true
+draft: false
 description: "The experience I wanted to achieve was that if one of our internal users went to any of our internal apps, they would be able to use SSO across them provided they were a member of the AAD group needed to access the app (or just a member of our tenant for organisation-wide apps) - no login button, just a seamless logged-in user experience."
 
 tags: ["azure", "azure active directory", "azure static web apps", "sso", "auth", "azure key vault", "bicep", "svelte", "sveltekit"]
