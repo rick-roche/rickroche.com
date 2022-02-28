@@ -70,7 +70,11 @@ To achieve the desired experience there are a number of components required
   * an Azure Static Web App for the web app
   * an Azure Key Vault to safely store the secrets for your app
 
-I will be showing you how to create, configure and deploy these using [GitHub Actions](https://docs.github.com/en/actions), [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) (for creating the Azure resources) and some once off scripts. All code is available on GitHub in a repo [over here](https://github.com/rick-roche/azure-static-web-apps-sso).
+I will be showing you how to create, configure and deploy these using [GitHub Actions](https://docs.github.com/en/actions), [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) (for creating the Azure resources) and some once off scripts.
+
+{{< admonition type=info title="" open=true >}}
+All code is available on GitHub [over here](https://github.com/rick-roche/azure-static-web-apps-sso)
+{{< /admonition >}}
 
 {{< admonition type=note title="" open=true >}}
 It is a good idea to wire up your Key Vault to a Log Analytics workspace or similar to track audit events when in production.
@@ -403,5 +407,9 @@ If all has gone well you should see the default page after login completes
 ![Welcome Page](screenshot-welcome.png "Welcome Page")
 
 And that's it! Hope you enjoyed this tutorial and that it helps you setup SSO for your Static Web Apps!
+
+{{< admonition type=info title="" open=true >}}
+A reminder that all code is available on GitHub [over here](https://github.com/rick-roche/azure-static-web-apps-sso)
+{{< /admonition >}}
 
 Featured image background by [Hello I'm Nik](https://unsplash.com/@helloimnik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText "Hello I'm Nik") on [Unsplash](https://unsplash.com/s/photos/sign-in?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
