@@ -39,7 +39,7 @@ It can also be quite a boring activity and can be time-consuming for a team main
 - it opens up a pull request on your repo
 - you review the PR and merge
 
-This is an awesome tool to save you time and I find it makes keeping your dependencies up to date really easy. 
+This is an awesome tool to save you time and I find it makes keeping your dependencies up to date really easy.
 
 ## Integration with Azure Pipelines
 
@@ -72,7 +72,7 @@ Have a look at all the [Task Parameters](https://github.com/tinglesoftware/depen
 
 ### Work Item Linking
 
-In the project I'm working in we have a policy set on all PR's to ensure they are linked to a work item. When I ran the above pipeline, I ended up with 10 PR's, none of which were linked to a work item so I couldn't quickly review and merge each one. The extension handles this by allowing you to pass in a `workItemId` parameter. 
+In the project I'm working in we have a policy set on all PR's to ensure they are linked to a work item. When I ran the above pipeline, I ended up with 10 PR's, none of which were linked to a work item so I couldn't quickly review and merge each one. The extension handles this by allowing you to pass in a `workItemId` parameter.
 
 {{< admonition type=note title="Changes in release 0.5" open=true >}}
 In the upcoming 0.5 release of the extension, the `workItemId` parameter has been [renamed](https://github.com/tinglesoftware/dependabot-azure-devops/pull/130) to `milestone` so please be on the look out for this change!
@@ -88,7 +88,7 @@ The Microsoft team have an [extension for creating work items](https://marketpla
     title: 'Update Dependencies' # The title of the work item
     # Adding some tags to the work item
     fieldMappings: |
-      Tags=dependabot; dependencies 
+      Tags=dependabot; dependencies
     areaPath: 'your\area'
     iterationPath: 'your\iteration'
     # Adding duplicate detection, using the area path, iteration path and title to match
@@ -116,7 +116,7 @@ The Microsoft team have an [extension for creating work items](https://marketpla
 
 The [Dependabot extension](https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot) depends on a Docker image hosted on [Docker Hub](https://hub.docker.com/r/tingle/dependabot-azure-devops/tags?page=1&ordering=last_updated). The image is around `4.4GB` in size and can take some time to download in the pipeline.
 
-In the docs it mentions 
+In the docs it mentions
 > Since this task makes use of a docker image, it may take time to install the docker image. The user can choose to speed this up by using [Caching for Docker](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/caching?view=azure-devops#docker-images) in Azure Pipelines.
 
 The caching tasks can look a bit confusing, breaking it down you need 3 parts:

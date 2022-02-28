@@ -26,7 +26,7 @@ I wanted to create a super simple website that is easy to maintain and easy to a
 
 <!--more-->
 
-My searches started looking around for static website generators (I was hoping that I could run this without a database and all that jazz that normally gets dragged along) and stumbled upon [Hugo](https://gohugo.io/) whose [GitHub README](https://github.com/gohugoio/hugo) describes it as 
+My searches started looking around for static website generators (I was hoping that I could run this without a database and all that jazz that normally gets dragged along) and stumbled upon [Hugo](https://gohugo.io/) whose [GitHub README](https://github.com/gohugoio/hugo) describes it as
 
 > A Fast and Flexible Static Site Generator built with love by [bep](https://github.com/bep), [spf13](http://spf13.com/) and [friends](https://github.com/gohugoio/hugo/graphs/contributors) in [Go](https://golang.org/).
 
@@ -44,9 +44,9 @@ I gave my site a nice name (`rick-roche`) to test using [rick-roche.netlify.app]
 
 ## Finishing up
 
-There were a few features I was looking for such as search, extended markdown for adding copyable code snippets and the ability to add tips and notes like I am used to doing when using Confluence for work. I found the [LoveIt](https://themes.gohugo.io/loveit/) theme while browsing through the [Hugo Themes](https://themes.gohugo.io/) which had everything I was looking for. 
+There were a few features I was looking for such as search, extended markdown for adding copyable code snippets and the ability to add tips and notes like I am used to doing when using Confluence for work. I found the [LoveIt](https://themes.gohugo.io/loveit/) theme while browsing through the [Hugo Themes](https://themes.gohugo.io/) which had everything I was looking for.
 
-A few updates later (LoveIt has a lot of configurable options), code pushed to GitHub and an automatic deployment thanks to Netlify and you are looking at the results. 
+A few updates later (LoveIt has a lot of configurable options), code pushed to GitHub and an automatic deployment thanks to Netlify and you are looking at the results.
 
 Allowing Hugo and Netlify to do the heavy lifting I have ended up with a website that
 - uses an open-source web framework (I like to be able to see the code)

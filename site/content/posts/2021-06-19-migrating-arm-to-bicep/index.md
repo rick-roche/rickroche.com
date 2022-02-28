@@ -93,7 +93,7 @@ E.g. I had `location` on [Microsoft.EventHub/namespaces/eventhubs](https://docs.
 > Error BCP037: The property "location" is not allowed on objects of type "Microsoft.EventHub/namespaces/eventhubs". Permissible properties include "dependsOn".
 
 The one error I did run into was for [Azure Logic Apps](https://azure.microsoft.com/en-us/services/logic-apps/ "Azure Logic Apps") where the schema for [Microsoft.Logic/workflows](https://docs.microsoft.com/en-us/azure/templates/microsoft.logic/workflows?tabs=json "Microsoft.Logic/workflows schema") is missing the `identity` property needed for using Managed Identity with your Logic App:
-    
+
 > Error BCP037: The property "identity" is not allowed on objects of type "Microsoft.Logic/workflows". Permissible properties include "dependsOn".
 
 Another common error I encountered was having read-only parameters in my templates (these tend to come along if you have exported templates from the Azure Portal). E.g.
