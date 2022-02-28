@@ -23,7 +23,7 @@ lightgallery: false
 
 We often build and deploy web applications specifically for users internal to our organisation. [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) is proving to be an excellent replacement for [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) in these scenarios.
 
-At a high-level you get a great set of features (outlined in the [release notes](https://azure.microsoft.com/en-us/updates/azure-static-web-apps-is-now-generally-available/))
+At a high-level the service provides you with a great set of features (outlined in the [Azure release notes](https://azure.microsoft.com/en-us/updates/azure-static-web-apps-is-now-generally-available/))
 > - Globally distributed content for production apps
 > - Tailored CI/CD workflows from code to cloud
 > - Auto-provisioned preview environments
@@ -60,6 +60,9 @@ Fortunately we already deploy our static web apps using the Standard plan for [$
 
 ## Getting it done!
 
+{{< image src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/rick-roche/azure-static-web-apps-sso/main/docs/diagrams/container-webapp.puml" caption="C4 Container Diagram" width=397  >}}
+
+
 To achieve the desired experience there are a number of components required
 * the static web app (the website)
 * an Azure App Registration for your app in your tenant
@@ -67,7 +70,7 @@ To achieve the desired experience there are a number of components required
   * an Azure Static Web App for the web app
   * an Azure Key Vault to safely store the secrets for your app
 
-I will be showing you how to create, configure and deploy these using [GitHub Actions](https://docs.github.com/en/actions), [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) for creating the Azure resources and some once off scripts. All code is available on GitHub in a repo [over here](https://github.com/rick-roche/azure-static-web-apps-sso).
+I will be showing you how to create, configure and deploy these using [GitHub Actions](https://docs.github.com/en/actions), [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) (for creating the Azure resources) and some once off scripts. All code is available on GitHub in a repo [over here](https://github.com/rick-roche/azure-static-web-apps-sso).
 
 {{< admonition type=note title="" open=true >}}
 It is a good idea to wire up your Key Vault to a Log Analytics workspace or similar to track audit events when in production.
@@ -265,7 +268,7 @@ jobs:
 
 ## Finalising auth
 
-At this stage you should have a GitHub action successfully deploying a Static Web App and a Key Vault to you resource group. You should also be able to browse to your web app using the generated URL (navigate into the Static Web App from the portal, and you will see your URL on the overview tab. e.g. https://gray-wave-03fb32a03.1.azurestaticapps.net).
+At this stage you should have a GitHub workflow successfully deploying a Static Web App and a Key Vault to you resource group. You should also be able to browse to your web app using the generated URL (navigate into the Static Web App from the portal, and you will see your URL on the overview tab. e.g. https://gray-wave-03fb32a03.1.azurestaticapps.net).
 
 ![Static Web App Overview](screenshot-azure-swa-overview.png "Static Web App Overview")
 
@@ -312,7 +315,7 @@ Configuration for Azure Static Web Apps is defined in the [`staticwebapp.config.
 
 I've put mine in the [root of the webapp folder](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/webapp/staticwebapp.config.json) and set it to do the following to enable the auto-login SSO magic
 
-* enable custom `auth` using [Azure Active Directory Version 2](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad#azure-active-directory-version-2) using the app settings references from earlier (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
+* enable custom `auth` with [Azure Active Directory Version 2](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad#azure-active-directory-version-2) using the app settings references from earlier (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
   ```json
   "auth": {
     "identityProviders": {
@@ -335,7 +338,7 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
   ```
 
 * specific rules for the apps `routes`
-  * creates a `/login` route redirecting to AAD allowing anonymous access (`"allowedRoles": ["anonymous", "authenticated"]`)
+  * creates a `/login` route redirecting to AAD allowing anonymous access
     ```json
     {
       "route": "/login",
@@ -356,7 +359,7 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
     },
     ```
 
-  * creates a `/logout` route redirecting to AAD allowing anonymous access (`"allowedRoles": ["anonymous", "authenticated"]`)
+  * creates a `/logout` route redirecting to AAD allowing anonymous access
     ```json
     {
       "route": "/logout",
