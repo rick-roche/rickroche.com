@@ -479,7 +479,7 @@ enableEmoji = true
     enable = true
     # Google Analytics
     [params.analytics.google]
-      id = "UA-186312215-1"
+      id = "G-HKFQ3RQ04D"
       # whether to anonymize IP
       anonymizeIP = true
 

@@ -168,7 +168,7 @@ For a GitHub Action to be able to deploy to your resource group you need to have
 ```bash
 az ad sp create-for-rbac --name "sp-swa-sso" \
     --role Owner \
-    --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+    --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group-name} \
     --sdk-auth
 ```
 
