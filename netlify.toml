@@ -9,7 +9,7 @@ HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview]
-command = "git submodule update --init --recursive --force --remote && ls -la && ls -la themes/LoveIt/layouts/partials && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+command = "git submodule update --init --recursive --force --remote && ls -la && ls -la themes/LoveIt/layouts/partials/plugin && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.111.3"
