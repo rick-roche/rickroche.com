@@ -1,24 +1,24 @@
 [build]
 base = "site/"
 publish = "public"
-command = "git submodule update --init --recursive --force --remote && hugo --gc --minify -b https://www.rickroche.com/"
+command = "git submodule update --init --recursive --force --remote && cd themes/LoveIt && git checkout v0.2.11 && cd - && hugo --gc --minify -b https://www.rickroche.com/"
 
 [context.production.environment]
-HUGO_VERSION = "0.110.0"
+HUGO_VERSION = "0.111.3"
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview]
-command = "git submodule update --init --recursive --force --remote && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+command = "git submodule update --init --recursive --force --remote && cd themes/LoveIt && git checkout v0.2.11 && cd - && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.110.0"
+HUGO_VERSION = "0.111.3"
 
 [context.branch-deploy]
-command = "git submodule update --init --recursive --force --remote && hugo --gc --minify -b $DEPLOY_PRIME_URL"
+command = "git submodule update --init --recursive --force --remote && cd themes/LoveIt && git checkout v0.2.11 && hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
-HUGO_VERSION = "0.110.0"
+HUGO_VERSION = "0.111.3"
 
 [dev]
 base = "site/"
