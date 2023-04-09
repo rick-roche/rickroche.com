@@ -547,7 +547,7 @@ enableEmoji = true
 [author]
   name = "Richard Roché"
   email = ""
-  link = ""
+  link = "https://www.rickroche.com"
 
 # Sitemap config
 [sitemap]
