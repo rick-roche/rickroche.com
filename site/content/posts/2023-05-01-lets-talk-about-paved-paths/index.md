@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-04-30T12:00:00+01:00
 lastmod: 2023-04-30T12:00:00+01:00
 draft: false
-description: "The start of a series of posts unpacking what paved paths mean in software engineering"
+description: "The start of a series of posts exploring what paved paths mean in software engineering"
 summary: "Paved Paths. Golden Paths. Paved Roads. You'd be forgiven for thinking the industry already had these nailed down, a solved problem that has been spoken about for years in various guises. This is part 1 of a series exploring all aspects of Paved Paths."
 authors:
   - name: Richard Roché
@@ -30,7 +30,7 @@ lightgallery: false
 ---
 
 {{< admonition type=info title="Paved Path Series" open=true >}}
-This is Part 1 in a series of posts discussing Paved Paths between [Chris](https://christaceygreen.com/) and I.
+This is Part 1 in a series of posts exploring Paved Paths between [Chris](https://christaceygreen.com/) and I.
 - [Part 2 - Paved Paths: A One Pager](todo)
 {{< /admonition >}}
 
