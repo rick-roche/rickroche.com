@@ -1,8 +1,8 @@
 ---
 title: "Let's Talk About Paved Paths"
 subtitle: ""
-date: 2023-05-01T08:00:00+01:00
-lastmod: 2023-05-01T08:00:00+01:00
+date: 2023-04-30T12:00:00+01:00
+lastmod: 2023-04-30T12:00:00+01:00
 draft: false
 description: "The start of a series of posts unpacking what paved paths mean in software engineering"
 authors:
