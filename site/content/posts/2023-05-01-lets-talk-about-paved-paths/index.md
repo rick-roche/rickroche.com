@@ -11,7 +11,7 @@ authors:
   - name: Chris Tacey-Green
     link: https://christaceygreen.com/
 
-tags: ["paved paths", "platform engineering", "engineering enablement", "series"]
+tags: ["paved paths", "platform engineering", "engineering enablement", "paved paths series"]
 categories: ["software"]
 
 hiddenFromHomePage: false
