@@ -1,5 +1,5 @@
 ---
-title: "Let's Talk About Paved Paths"
+title: "Paved Paths Series - Part 1 - Let's Talk About Paved Paths"
 subtitle: ""
 date: 2023-04-30T12:00:00+01:00
 lastmod: 2023-04-30T12:00:00+01:00
