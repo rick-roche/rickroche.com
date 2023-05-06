@@ -229,7 +229,14 @@ enableEmoji = true
       # title name
       name = "Rick Roché"
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = "<i class='fas fa-skull-crossbones fa-fw'></i>"
+      # pre = "<i class='fas fa-skull-crossbones fa-fw'></i>"
+      # pre = "<i class='fas fa-rocket fa-fw'></i>"
+      # pre = "<i class='fas fa-shuttle-space fa-fw'></i>"
+      # pre = "<i class='fas fa-robot fa-fw'></i>"
+      pre = "<i class='fas fa-user-astronaut fa-fw'></i>"
+      # pre = "<i class='fas fa-code fa-fw'></i>"
+      # pre = "<i class='fas fa-terminal fa-fw'></i>"
+      # pre = "<i class='fas fa-dice-d20 fa-fw'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # whether to use typeit animation for title name
