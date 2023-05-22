@@ -2,7 +2,7 @@
 title: "Paved Paths Series - Part 3 - Why Paved Paths?"
 subtitle: ""
 date: 2023-05-06T10:43:59+01:00
-lastmod: 2023-05-06T10:43:59+01:00
+lastmod: 2023-05-22T13:20:00+01:00
 draft: false
 description: "Part 3 of a series of posts exploring what paved paths mean in software engineering. This post explores why organisations should care about paved paths."
 summary: "There is a tension that is constantly at play in software engineering teams - increase their autonomy to enable them to build without hand-offs, while reducing the same teams' cognitive load to allow them to focus on delivering value. With cloud computing, shifting left on everything, and maturing practices that enable continuous delivery, teams now have the potential to build, run and operate every aspect of their applications. But with this potential, comes the very real threat of burnout, skill gaps that lead to poor quality products, unwanted risks or slow time to market."
@@ -33,7 +33,8 @@ lightgallery: false
 This is Part 3 in a series of posts exploring Paved Paths between [Chris](https://christaceygreen.com/) and I.
 - [Part 1 - Let's Talk About Paved Paths](https://www.rickroche.com/2023/04/paved-paths-series-part-1-lets-talk-about-paved-paths/)
 - [Part 2 - Paved Paths: A One Pager](https://christaceygreen.com/blog/paved-paths-series-part-2-a-one-pager)
-- Part 4 - The Anatomy of Paved Paths - Coming soon!
+- [Part 4 - The Anatomy of Paved Paths](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths)
+- Part 5 - The Spectrum of Platform Engineering and Paved Paths - Coming soon!
 {{< /admonition >}}
 
 In this post we explore why organisations should care about paved paths.
@@ -95,6 +96,6 @@ Additionally,
 
 In a perfect world, teams would never have to learn the same lesson more than once in your organisation. Paved paths form the home where this shared consciousness is stored, iterated on and shared.
 
-Up next, in part 4, we will unpack the anatomy of Paved Paths and all the components we believe should go into them.
+Up next, in part 4, we will unpack the anatomy of Paved Paths and all the components we believe should go into them - read it [here](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths).
 
 Featured image background by [Megan Lee](https://unsplash.com/pt-br/@meganlee007?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/EsNA2bhBZ-8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

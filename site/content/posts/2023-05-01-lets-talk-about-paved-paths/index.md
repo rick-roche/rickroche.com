@@ -2,7 +2,7 @@
 title: "Paved Paths Series - Part 1 - Let's Talk About Paved Paths"
 subtitle: ""
 date: 2023-04-30T12:00:00+01:00
-lastmod: 2023-05-06T10:43:59+01:00
+lastmod: 2023-05-22T13:20:00+01:00
 draft: false
 description: "The start of a series of posts exploring what paved paths mean in software engineering"
 summary: "Paved Paths. Golden Paths. Paved Roads. You'd be forgiven for thinking the industry already had these nailed down, a solved problem that has been spoken about for years in various guises. This is part 1 of a series exploring all aspects of Paved Paths."
@@ -33,7 +33,8 @@ lightgallery: false
 This is Part 1 in a series of posts exploring Paved Paths between [Chris](https://christaceygreen.com/) and I.
 - [Part 2 - Paved Paths: A One Pager](https://christaceygreen.com/blog/paved-paths-series-part-2-a-one-pager)
 - [Part 3 - Why Paved Paths?](/2023/05/paved-paths-series-part-3-why-paved-paths/)
-- Part 4 - The Anatomy of Paved Paths - Coming soon!
+- [Part 4 - The Anatomy of Paved Paths](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths)
+- Part 5 - The Spectrum of Platform Engineering and Paved Paths - Coming soon!
 {{< /admonition >}}
 
 Paved Paths. Golden Paths. Paved Roads. You'd be forgiven for thinking the industry already had these nailed down, a solved problem that has been spoken about for years in various guises. With the current spotlight on platform engineering and developer experience, their name is being comfortably thrown around more and more regularly. Unfortunately, descriptions of them are usually from 30,000ft. and if you try to delve deeper, looking for details and commonly experienced challenges, you'll likely find very little. Maybe a few gems hidden in the clouds...
