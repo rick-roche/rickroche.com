@@ -51,7 +51,7 @@ The problem with this, is that paved paths aren't **only** valid if you're follo
 
 ### Platform Engineering
 
-At one end of our spectrum, we have Platform Engineering. Engineering teams rely on clearly defined platforms to abstract away many of the 'things that aren't code'. In a lot of cases, this covers the infrastructure containing the application (Kubernetes, Networking, Storage, Monitoring, Resilience etc) as well as common patterns like observability, cost management and security. The engineers focus on the application code, pump out features, and don't bother themselves with things like ([Helm](https://helm.sh/)) or [Terraform](https://www.terraform.io/).
+At one end of our spectrum, we have Platform Engineering. Engineering teams rely on clearly defined platforms to abstract away many of the 'things that aren't code'. In a lot of cases, this covers the infrastructure containing the application (Kubernetes, Networking, Storage, Monitoring, Resilience etc) as well as common patterns like observability, cost management and security. The engineers focus on the application code, pump out features, and don't bother themselves with things like crafting [Helm](https://helm.sh/) or [Terraform](https://www.terraform.io/) or figuring out observability.
 
 ### You Build It, You Run It (YBIYRI)
 
@@ -76,7 +76,7 @@ There are risks with this approach. Abstracting away complexity, without a platf
 
 By sitting ourselves in the centre of this spectrum, we raise a new question over ownership of the Paved Paths. As we've discussed, no specific team owns them. There isn't a platform team to rely on, and the engineering teams own their products. So how do we maintain them, and ensure they are still valuable to the community? Well, community engagement is a must. If your organisation is running quality production software, it already has the skills and subject-matter experts (SMEs) needed to maintain an incredible set of Paved Paths. They just need to be empowered and encouraged to own building blocks within them.
 
-Engineering teams should contribute back to the Paved Paths they rely on, evolving them as they learn from production. They are the best informed on the state of the developer experience and are best placed to improve it. Encourage your teams to make time to contribute back.
+Engineering teams should contribute back to the Paved Paths they rely on, evolving them as they learn from production. They are the best informed on the state of the developer experience and are best placed to improve it. Encourage your teams to make time to contribute back and normalise taking time for continuous improvement.
 
 Empower the SMEs in your organisation to contribute and own components of your paved paths. DBAs can pour their deep knowledge into sections relevant to databases, driving performance and cost-saving improvements across the organisation. Infrastructure experts can apply their expertise to areas like Infrastructure-as-Code, Networking, and Automation techniques. Security SMEs can take their standards and recommendations, and implement them within building blocks and pipeline tooling. For this to work, an [innersourcing](https://about.gitlab.com/topics/version-control/what-is-innersource/) model is a great idea - make this part of your paved path contribution model, and make the contribution guidelines clear.
 
@@ -87,7 +87,7 @@ There's one more group of people who can provide a huge amount of value towards 
 {{< admonition type=note title="Is my organisation big enough for this?" open=true >}}
 Absolutely! The size of an organisation will only affect the number of people you may need to scale out your engineering practices. Either side of the spectrum focuses effort in different ways, but doesn't dictate more or less people.
 
-The most important factor here is sponsorship and focus. An organisation sponsoring long-term value, rather than short-term wins will succeed ([culture - part 4](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths#culture)).
+The most important factor here is sponsorship and focus. An organisation sponsoring long-term value, rather than short-term wins will succeed (see [culture - part 4](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths#culture)).
 {{< /admonition >}}
 
 Up next, in part 6, we will discuss the important topic of measuring the success of your paved paths - coming soon!
