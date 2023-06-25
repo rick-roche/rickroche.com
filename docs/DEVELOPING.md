@@ -16,7 +16,7 @@ brew install hugo netlify-cli
 To [add a new post](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
 
 ```sh
-hugo -s site/ new posts/$(date +%F)-post-name/index.md
+hugo -s site/ new content posts/$(date +%F)-post-name/index.md
 ```
 
 To test locally run the following
