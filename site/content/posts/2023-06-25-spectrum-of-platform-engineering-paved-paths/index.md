@@ -47,7 +47,7 @@ The problem with this, is that paved paths aren't **only** valid if you're follo
 
 ## The Spectrum
 
-![The spectrum of platform engineering and paved paths](the-spectrum.png)
+{{< image class="image-center" src="the-spectrum.png" alt="The spectrum of platform engineering and paved paths" title="The spectrum of platform engineering and paved paths" width="90%" height="100%" linked="false">}}
 
 ### Platform Engineering
 
