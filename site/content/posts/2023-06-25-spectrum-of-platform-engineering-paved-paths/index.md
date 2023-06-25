@@ -4,7 +4,7 @@ subtitle: ""
 slug: "paved-paths-series-part-5-the-spectrum"
 date: 2023-06-25T15:08:33+01:00
 lastmod: 2023-06-25T15:08:33+01:00
-draft: true
+draft: false
 description: "Part 5 of a series of posts exploring what paved paths mean in software engineering. This post explores the extremes between a centralised model and a completely democratised model, and suggests a possible nirvana between the two."
 summary: "In this post, we explore the extremes between a centralised model and a completely democratised model, and we suggest a possible nirvana between the two.
 
