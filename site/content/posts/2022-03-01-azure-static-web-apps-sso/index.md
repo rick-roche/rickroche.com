@@ -54,7 +54,7 @@ These options allow users to login using a login button linking to the desired p
 
 Initially I tried to use the pre-configured AAD provider, and when trying to log in using my company account I was presented with this approval dialogue
 
-![Azure Static Web Apps Admin Approval](screenshot-aad-swa-admin-approval.png "Azure Static Web Apps Admin Approval")
+{{< image class="image-center" src="screenshot-aad-swa-admin-approval.png" alt="Azure Static Web Apps Admin Approval" title="Azure Static Web Apps Admin Approval" width="50%" height="100%">}}
 
 Meaning if I was able to get an admin to grant the permission, all users from our tenant would be able to log in to all Azure Static Web Apps, regardless of who had deployed them making this a non-starter for me.
 
@@ -62,7 +62,7 @@ Fortunately we already deploy our static web apps using the Standard plan for [$
 
 ## Getting it done!
 
-![C4 Container Diagram](c4-container.png "C4 Container Diagram")
+{{< image class="image-center" src="c4-container.png" alt="C4 Container Diagram" title="C4 Container Diagram" width="50%" height="100%" linked="false">}}
 
 To achieve the desired experience there are a number of components required
 
@@ -279,7 +279,7 @@ jobs:
 
 At this stage you should have a GitHub workflow successfully deploying a Static Web App and a Key Vault to you resource group. You should also be able to browse to your web app using the generated URL (navigate into the Static Web App from the portal, and you will see your URL on the overview tab. e.g. [https://gray-wave-03fb32a03.1.azurestaticapps.net](https://gray-wave-03fb32a03.1.azurestaticapps.net)).
 
-![Static Web App Overview](screenshot-azure-swa-overview.png "Static Web App Overview")
+{{< image class="image-center" src="screenshot-azure-swa-overview.png" alt="Static Web App Overview" title="Static Web App Overview" caption="Static Web App Overview" width="100%" height="100%" linked="true">}}
 
 {{< admonition type=note title="" open=true >}}
 Your app won't ask you to authenticate just yet!
@@ -411,15 +411,15 @@ The combination of all of the above means that anyone accessing the site that is
 
 Commit all your outstanding changes, push to GitHub and watch your action deploy... once done, access your web app in the browser, and it should redirect you to login
 
-![Azure AD Login](screenshot-aad-login.png "Azure AD Login")
+{{< image class="image-center" src="screenshot-aad-login.png" alt="Azure AD Login" title="Azure AD Login" width="50%" height="100%" linked="true">}}
 
 Initially you will need to provide admin consent for your AD app registration to read the logged-in user details
 
-![Azure AD User Consent](screenshot-aad-consent.png "Azure AD User Consent")
+{{< image class="image-center" src="screenshot-aad-consent.png" alt="Azure AD User Consent" title="Azure AD User Consent" width="50%" height="100%" linked="true">}}
 
 If all has gone well you should see the default page after login completes
 
-![Welcome Page](screenshot-welcome.png "Welcome Page")
+{{< image class="image-center" src="screenshot-welcome.png" alt="Welcome Page" title="Welcome Page" width="80%" height="100%" linked="true">}}
 
 And that's it! Hope you enjoyed this tutorial and that it helps you setup SSO for your Static Web Apps!
 

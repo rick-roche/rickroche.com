@@ -35,7 +35,8 @@ This is Part 3 in a series of posts exploring Paved Paths between [Chris](https:
 - [Part 1 - Let's Talk About Paved Paths](https://www.rickroche.com/2023/04/paved-paths-series-part-1-lets-talk-about-paved-paths/)
 - [Part 2 - Paved Paths: A One Pager](https://christaceygreen.com/blog/paved-paths-series-part-2-a-one-pager)
 - [Part 4 - The Anatomy of Paved Paths](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths)
-- Part 5 - The Spectrum of Platform Engineering and Paved Paths - Coming soon!
+- [Part 5 - The Spectrum of Platform Engineering and Paved Paths](/2023/06/paved-paths-series-part-5-the-spectrum/)
+- Part 6 - Measuring the Success of Paved Paths - Coming soon!
   {{< /admonition >}}
 
 In this post we explore why organisations should care about paved paths.
