@@ -3,3 +3,4 @@ content/posts/*.md
 public/
 .netlify
 thoughts/
+_gen/
