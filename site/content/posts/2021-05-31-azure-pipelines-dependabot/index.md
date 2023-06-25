@@ -23,6 +23,7 @@ lightgallery: false
 ---
 
 Keeping your dependencies up to date in a project is a really easy way to try and keep the software secure. New releases of a dependency often include
+
 - Patches for security vulnerabilities!
 - Performance improvements!
 - Awesome new features!
@@ -35,6 +36,7 @@ It can also be quite a boring activity and can be time-consuming for a team main
 ## Dependabot?
 
 [Dependabot](https://dependabot.com/) creates pull requests on your repos with the dependencies you should update. You can read about [how it works](https://dependabot.com/#how-it-works); but in a nutshell
+
 - it checks for updates of your dependencies
 - it opens up a pull request on your repo
 - you review the PR and merge
@@ -52,18 +54,18 @@ The extension is feature rich and works really well with little configuration re
 ```yaml
 stages:
   - stage: CheckDependencies
-    displayName: 'Check Dependencies'
+    displayName: "Check Dependencies"
     jobs:
       - job: Dependabot
-        displayName: 'Run Dependabot'
+        displayName: "Run Dependabot"
         pool:
-          vmImage: 'ubuntu-latest'
+          vmImage: "ubuntu-latest"
         steps:
           - task: dependabot@1
-            displayName: 'Run Dependabot'
+            displayName: "Run Dependabot"
             inputs:
-              packageManager: 'nuget' # Examples: nuget, maven, gradle, npm, etc. Add multiple tasks if multiple package managers are used in your solution
-              targetBranch: 'main'
+              packageManager: "nuget" # Examples: nuget, maven, gradle, npm, etc. Add multiple tasks if multiple package managers are used in your solution
+              targetBranch: "main"
               openPullRequestsLimit: 10 # Limits the number of PR's you get
               setAutoComplete: true # Saves us one click, once our PR policies pass, the update will merge
 ```
@@ -82,10 +84,10 @@ The Microsoft team have an [extension for creating work items](https://marketpla
 
 ```yaml
 - task: CreateWorkItem@1
-  displayName: 'Create User Story for Dependabot'
+  displayName: "Create User Story for Dependabot"
   inputs:
-    workItemType: 'User Story' # We wanted a User Story created, but all work item types are available
-    title: 'Update Dependencies' # The title of the work item
+    workItemType: "User Story" # We wanted a User Story created, but all work item types are available
+    title: "Update Dependencies" # The title of the work item
     # Adding some tags to the work item
     fieldMappings: |
       Tags=dependabot; dependencies
@@ -103,10 +105,10 @@ The Microsoft team have an [extension for creating work items](https://marketpla
       workItemId=ID
 
 - task: dependabot@1
-  displayName: 'Run Dependabot'
+  displayName: "Run Dependabot"
   inputs:
-    packageManager: 'nuget'
-    targetBranch: 'main'
+    packageManager: "nuget"
+    targetBranch: "main"
     openPullRequestsLimit: 10
     workItemId: $(workItemId) # This uses the output from the above as the work item to link the PR's to
     setAutoComplete: true
@@ -117,6 +119,7 @@ The Microsoft team have an [extension for creating work items](https://marketpla
 The [Dependabot extension](https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot) depends on a Docker image hosted on [Docker Hub](https://hub.docker.com/r/tingle/dependabot-azure-devops/tags?page=1&ordering=last_updated). The image is around `4.4GB` in size and can take some time to download in the pipeline.
 
 In the docs it mentions
+
 > Since this task makes use of a docker image, it may take time to install the docker image. The user can choose to speed this up by using [Caching for Docker](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/caching?view=azure-devops#docker-images) in Azure Pipelines.
 
 The caching tasks can look a bit confusing, breaking it down you need 3 parts:
@@ -159,7 +162,7 @@ We have a pipeline that runs on a schedule, running all the above steps together
 ```yaml
 schedules:
   - cron: "0 4 * * 1"
-    displayName: 'Weekly Run'
+    displayName: "Weekly Run"
     always: true
     branches:
       include:
@@ -173,18 +176,18 @@ variables:
 
 stages:
   - stage: CheckDependencies
-    displayName: 'Check Dependencies'
+    displayName: "Check Dependencies"
     jobs:
       - job: Dependabot
-        displayName: 'Run Dependabot'
+        displayName: "Run Dependabot"
         pool:
-          vmImage: 'ubuntu-latest'
+          vmImage: "ubuntu-latest"
         steps:
           - task: CreateWorkItem@1
-            displayName: 'Create User Story for Dependabot'
+            displayName: "Create User Story for Dependabot"
             inputs:
-              workItemType: 'User Story'
-              title: 'Update Dependencies'
+              workItemType: "User Story"
+              title: "Update Dependencies"
               fieldMappings: |
                 Tags=dependabot; dependencies
               areaPath: 'your\area'
@@ -216,10 +219,10 @@ stages:
             condition: and(not(canceled()), or(failed(), ne(variables.DOCKER_CACHE_HIT, 'true')))
 
           - task: dependabot@1
-            displayName: 'Run Dependabot'
+            displayName: "Run Dependabot"
             inputs:
-              packageManager: 'nuget'
-              targetBranch: 'main'
+              packageManager: "nuget"
+              targetBranch: "main"
               openPullRequestsLimit: 10
               workItemId: $(workItemId)
               setAutoComplete: true
