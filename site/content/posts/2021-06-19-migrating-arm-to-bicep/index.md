@@ -52,23 +52,23 @@ This creates a `azuredeploy.bicep` file in the same directory. Depending on your
 
 > WARNING: Decompilation is a best-effort process, as there is no guaranteed mapping from ARM JSON to Bicep.
 > You may need to fix warnings and errors in the generated bicep file(s), or decompilation may fail entirely if an accurate conversion is not possible.
-> If you would like to report any issues or inaccurate conversions, please see https://github.com/Azure/bicep/issues.
+> If you would like to report any issues or inaccurate conversions, please see [https://github.com/Azure/bicep/issues](https://github.com/Azure/bicep/issues).
 
 **It is important to note that the migration from ARM to Bicep will highlight issues in your ARM templates. ARM was more forgiving in certain aspects, after the migration, your templates will be in a better state.**
 
-Errors come in the form of `Error BCPXXX: Description` and the descriptions generally let you get to the root of the problem quickly. E.g. *Error BCP037: The property "location" is not allowed on objects of type "Microsoft.EventHub/namespaces/eventhubs". Permissible properties include "dependsOn".*
+Errors come in the form of `Error BCPXXX: Description` and the descriptions generally let you get to the root of the problem quickly. E.g. _Error BCP037: The property "location" is not allowed on objects of type "Microsoft.EventHub/namespaces/eventhubs". Permissible properties include "dependsOn"._
 
 If the decompilation gives you any errors, my preferred approach is to fix the ARM template and then run the decompilation again until you get a "clean" decompilation (warnings are fine, just ensure you decompile with no errors).
 
-Warnings come in two flavours, ones that have a code (*Warning BCPXXX*) and ones that don't have a code but have a link at the end. As of `v0.4` there is a [linter](https://github.com/Azure/bicep/blob/main/docs/linter.md "Bicep Linter") which helps you get your templates into great shape -- these are the warnings with the links at the end. Both kinds of warnings are generally quick to fix and are sensible updates to start getting the benefits from Bicep.
+Warnings come in two flavours, ones that have a code (_Warning BCPXXX_) and ones that don't have a code but have a link at the end. As of `v0.4` there is a [linter](https://github.com/Azure/bicep/blob/main/docs/linter.md "Bicep Linter") which helps you get your templates into great shape -- these are the warnings with the links at the end. Both kinds of warnings are generally quick to fix and are sensible updates to start getting the benefits from Bicep.
 
 ## Common errors and how to fix them
 
 ### User defined functions are not supported (BCP007, BCP057)
 
 If you have created user defined functions in ARM, these will not be decompiled (follow the [issue](https://github.com/Azure/bicep/issues/2)) and you will get two cryptic errors
-> Error BCP007: This declaration type is not recognized. Specify a parameter, variable, resource, or output declaration.
 
+> Error BCP007: This declaration type is not recognized. Specify a parameter, variable, resource, or output declaration.
 > Error BCP057: The name "`functionName`" does not exist in the current context.
 
 **To fix, move the function logic into your template (this may require duplication, but can be neatened up in the Bicep template later)**
@@ -86,6 +86,7 @@ Fortunately [Bicep handles dependencies](https://docs.microsoft.com/en-us/azure/
 **To fix, delete your nested dependencies and validate (consider removing your `dependsOn` references entirely)**
 
 ### Strict schema validation (BCP037, BCP073)
+
 Bicep validates the schema of each resource much more diligently than ARM. As a result you will probably find a bunch of places where you have added properties like `location` or `tags` to a resource that doesn't support them and ARM didn't mind this. These will be expressed as `Error BCP037`.
 
 E.g. I had `location` on [Microsoft.EventHub/namespaces/eventhubs](https://docs.microsoft.com/en-us/azure/templates/microsoft.eventhub/namespaces/eventhubs?tabs=json "Microsoft.EventHub/namespaces/eventhubs schema")
@@ -125,15 +126,12 @@ az bicep build --file azuredeploy.bicep
 [Data types](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/data-types "Bicep Data Types") in Bicep are stricter than in ARM. If you have used `True` or `False` for booleans these need to be updated to be `true` and `false`. When using enums, they need to match the enums in the schema exactly (case-sensitive). E.g. if you used `ascending` and the template schema defines `Ascending` this adjustment needs to be made. Examples of these warnings are shown below.
 
 > Warning BCP036: The property "kafkaEnabled" expected a value of type "bool | null" but the provided value is of type "'False' | 'True'".
-
 > Warning BCP036: The property "order" expected a value of type "'Ascending' | 'Descending' | null" but the provided value is of type "'ascending'".
 
 Similar to the errors thrown by BCP037 and BCP073 you will get warnings on schema mismatches using codes BCP035, BCP037 and BCP073. These highlight schema mismatches, missing properties and read-only properties used. Examples below.
 
 > Warning BCP035: The specified "object" declaration is missing the following required properties: "options".
-
 > Warning BCP037: The property "apiVersion" is not allowed on objects of type "Output". No other properties are allowed.
-
 > Warning BCP073: The property "status" is read-only. Expressions cannot be assigned to read-only properties.
 
 I did find an instance where the Bicep template matches the schema perfectly however warnings are still thrown. I think this is due to [this issue](https://github.com/Azure/bicep/issues/3215 "Property values originating from resource properties are not validated correctly") and fortunately doesn't break anything.
@@ -158,7 +156,7 @@ We had a lot of hardcoded URL's in our templates for storage suffixes, front doo
 
 > Warning no-hardcoded-env-urls: Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds. Found this disallowed host: "core.windows.net" [https://aka.ms/bicep/linter/no-hardcoded-env-urls]
 
-**To fix, have a look at all the [URLs that the environment function provides](https://docs.microsoft.com/en-za/azure/azure-resource-manager/templates/template-functions-deployment?tabs=json#environment "Environment Template Function") and replace your hard-coded version with `environment().<property>`. **
+**To fix, have a look at all the [URLs that the environment function provides](https://docs.microsoft.com/en-za/azure/azure-resource-manager/templates/template-functions-deployment?tabs=json#environment "Environment Template Function") and replace your hard-coded version with `environment().<property>`.**
 
 E.g. for Azure Storage where `core.windows.net` had been hard coded, replacing with `environment().suffixes.storage` gives the desired result.
 
@@ -169,6 +167,7 @@ Bicep introduces the concept of target scopes which dictates the scope that reso
 > Warning BCP174: Type validation is not available for resource types declared containing a "/providers/" segment. Please instead use the "scope" property. [https://aka.ms/BicepScopes]
 
 These are the most time-consuming to fix, essentially you need to
+
 - use the schema reference of the actual resource (so for diagnostic settings us `microsoft.insights/diagnosticSettings@2017-05-01-preview`) instead of the parent resource `/providers`/
 - add a `scope` referencing the parent resource
 - rename so as not to reference the parent resource
@@ -218,7 +217,7 @@ resource functionAppLogAnalytics 'microsoft.insights/diagnosticSettings@2017-05-
 
 A resounding yes from me! The process above goes quite quickly, and I was on shiny new Bicep templates in less than an hour. Bicep is a much friendlier syntax to work with and the IDE support is great. What I also enjoyed is cleaning up all the errors that were present in my ARM templates that would have remained if not for the migration.
 
-There is a neat comparison of ARM syntax vs Bicep syntax here which highlights a lot of the constructs that become simpler as well: https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/compare-template-syntax
+There is a neat comparison of ARM syntax vs Bicep syntax here which highlights a lot of the constructs that become simpler as well: [https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/compare-template-syntax](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/compare-template-syntax)
 
 Enjoy the migration! I will be playing around with modules and reuse next and will share what I find.
 

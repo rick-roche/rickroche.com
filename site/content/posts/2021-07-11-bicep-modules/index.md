@@ -30,6 +30,7 @@ From the [Bicep documentation](https://docs.microsoft.com/en-us/azure/azure-reso
 > Bicep enables you to break down a complex solution into modules. A Bicep module is a set of one or more resources to be deployed together. Modules abstract away complex details of the raw resource declaration, which can increase readability. You can reuse these modules, and share them with other people. Bicep modules are transpiled into a single ARM template with [nested templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/linked-templates#nested-template "Nested Templates") for deployment.
 
 One of the traps we fell into with ARM templates was duplicating templates to make composing and deploying the resources we need easier. Any opportunity to make the deployment of infrastructure more readable, more reusable, and more composable are excellent reasons for me to give it a go. My goal when doing this refactor was to
+
 - get rid of any duplication by creating fine-grained modules, designed to be reused
 - ensure that all main templates are super easy to use by composing modules together in a way that makes sense for the application
 - enable reusability of the fine-grained modules in other projects going forward.
@@ -56,6 +57,7 @@ modules/
 Personally I prefer to have one module to create a storage account and another to add tables to that storage account etc. This level of granularity felt like a good place to start.
 
 ### Referencing existing resources inside a module
+
 By making fine-grained modules, there were a number of use cases where I would need to reference an existing resource. For example, creating tables in a storage account requires an existing storage account. [Referencing an existing resource](https://github.com/Azure/bicep/blob/main/docs/spec/resources.md#referencing-existing-resources "Bicep Existing Resources") is really easy -- you only need to know its name and can reference it as follows,
 
 ```bicep
@@ -70,7 +72,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-02-01' existing 
 outputs storageAccountResourceId = storageAccount.id
 ```
 
-### Loops!
+### Loops
 
 I really like the [loops](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md "Bicep loops") feature. This allows you to iterate over an array setting multiple properties or creating multiple resources etc. This came in super handy for a storage account tables module that can create multiple tables in one go. E.g.
 
@@ -214,6 +216,7 @@ Another thing to note is the `name` of your module is what is shown in the `Depl
 At this stage I've got different two styles of modules -- app specific modules breaking up my `main.bicep`, making it easier to read and maintain and fine-grained templates in a `modules` folder that I can use across all the apps in my `infra` folder. Readable -- check! Composable -- check! Reusable -- only inside this repo, so half a check!
 
 The current version of Bicep (`v0.4.63`), does not have a native mechanism to externally share modules across projects. The good news is that this is being looked at and will _hopefully_ be in the v0.5 release. The issues to watch are:
+
 - [[Story] Bicep Registry](https://github.com/Azure/bicep/issues/2128 "[Story] Bicep Registry")
 - [Ability to reference "external" modules](https://github.com/Azure/bicep/issues/660 "Ability to reference 'external' modules")
 - [Modules need versions](https://github.com/Azure/bicep/issues/1242 "Modules need versions")
@@ -228,6 +231,7 @@ git submodule update --init
 ## Testing locally
 
 To quickly validate the individual modules and main templates on my local machine, I wrote a [simple bash script](https://gist.github.com/rick-roche/57c90abae06630060afce1e76372b13b "infra.sh Gist") to either
+
 - build the Bicep file, outputting to the terminal rather than writing to file or
 - validate the Bicep template against a resource group
 

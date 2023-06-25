@@ -49,6 +49,7 @@ There were a few features I was looking for such as search, extended markdown fo
 A few updates later (LoveIt has a lot of configurable options), code pushed to GitHub and an automatic deployment thanks to Netlify and you are looking at the results.
 
 Allowing Hugo and Netlify to do the heavy lifting I have ended up with a website that
+
 - uses an open-source web framework (I like to be able to see the code)
 - allows me to easily write content using markdown
 - has continuous deployment for rapid publishing
@@ -64,4 +65,4 @@ I googled and read a bunch as I hacked my way through getting this site up. Here
 - [Hugo best practices](https://github.com/spech66/hugo-best-practices)
 - [A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
 
-Featured image background by [NihoNorway graphy](https://unsplash.com/@nihongraphy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText").
+Featured image background by [NihoNorway graphy](https://unsplash.com/@nihongraphy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText").

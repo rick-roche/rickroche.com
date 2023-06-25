@@ -24,6 +24,7 @@ lightgallery: false
 We often build and deploy web applications specifically for users internal to our organisation. [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) is proving to be an excellent replacement for [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) in these scenarios.
 
 At a high-level the service provides you with a great set of features (outlined in the [Azure release notes](https://azure.microsoft.com/en-us/updates/azure-static-web-apps-is-now-generally-available/))
+
 > - Globally distributed content for production apps
 > - Tailored CI/CD workflows from code to cloud
 > - Auto-provisioned preview environments
@@ -44,9 +45,10 @@ It turns out this was super easy to get right! Follow below!
 ## Authentication options
 
 Azure Static Web Apps makes authentication easy to enable across the three [pre-configured identity providers](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-authorization?tabs=invitations)
-* Azure Active Directory (AAD)
-* Github or
-* Twitter
+
+- Azure Active Directory (AAD)
+- Github or
+- Twitter
 
 These options allow users to login using a login button linking to the desired provider.
 
@@ -63,11 +65,12 @@ Fortunately we already deploy our static web apps using the Standard plan for [$
 ![C4 Container Diagram](c4-container.png "C4 Container Diagram")
 
 To achieve the desired experience there are a number of components required
-* the static web app (the website)
-* an Azure App Registration for your app in your tenant
-* an Azure resource group for your project (I'm working on the assumption you already have a subscription, if not [read here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription))
-  * an Azure Static Web App for the web app
-  * an Azure Key Vault to safely store the secrets for your app
+
+- the static web app (the website)
+- an Azure App Registration for your app in your tenant
+- an Azure resource group for your project (I'm working on the assumption you already have a subscription, if not [read here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription))
+  - an Azure Static Web App for the web app
+  - an Azure Key Vault to safely store the secrets for your app
 
 I will be showing you how to create, configure and deploy these using [GitHub Actions](https://docs.github.com/en/actions), [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) (for creating the Azure resources) and some once off scripts.
 
@@ -106,18 +109,19 @@ az group create -g rg-swa-sso -l northeurope
 ```
 
 #### Resources
+
 We will be deploying a Static Web App as well as a Key Vault using Bicep. I've split out the Bicep files to make them easier to work with as follows (filenames link to the code on GitHub)
 
-* [`main.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/main.bicep) - the main template that is deployed which makes use of the other templates
-* [`get-kv-secrets-refs.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/get-kv-secrets-refs.bicep) - a helper to build up the Key Vault secret references
-* [`key-vault.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/key-vault.bicep) - defines the Key Vault resources and the role assignments needed
-* [`static-sites.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/static-sites.bicep) - defines the Static Web App resources needed
+- [`main.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/main.bicep) - the main template that is deployed which makes use of the other templates
+- [`get-kv-secrets-refs.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/get-kv-secrets-refs.bicep) - a helper to build up the Key Vault secret references
+- [`key-vault.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/key-vault.bicep) - defines the Key Vault resources and the role assignments needed
+- [`static-sites.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/static-sites.bicep) - defines the Static Web App resources needed
 
 In the [`main.bicep`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/infra/main.bicep) there are the following highlights to make note of
 
-* Configuring the static web app
-  * to have app settings that are Key Vault references (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
-  * to use the `Standard` sku
+- Configuring the static web app
+  - to have app settings that are Key Vault references (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
+  - to use the `Standard` sku
 
 ```bicep
 module swa 'static-sites.bicep' = {
@@ -137,7 +141,7 @@ module swa 'static-sites.bicep' = {
 }
 ```
 
-* And configuring the key vault to allow the static web app permissions to read from it
+- And configuring the key vault to allow the static web app permissions to read from it
 
 ```bicep
 // https://docs.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations
@@ -175,10 +179,11 @@ az ad sp create-for-rbac --name "sp-swa-sso" \
 You will get a JSON output from this that you can then save as a GitHub secret with the name `AZURE_CREDENTIALS`.
 
 {{< admonition type=note title="" open=true >}}
-* Replace `{subscription-id}` with the ID of your subscription
-* Replace `{resource-group-name}` with the name of your resource group
-* I've made the service principal have Owner access to the resource group (so that I can assign roles).
-{{< /admonition >}}
+
+- Replace `{subscription-id}` with the ID of your subscription
+- Replace `{resource-group-name}` with the name of your resource group
+- I've made the service principal have Owner access to the resource group (so that I can assign roles).
+  {{< /admonition >}}
 
 #### Workflow token
 
@@ -187,12 +192,13 @@ Azure Static Web Apps needs access to your workflow when deploying. For this we'
 #### Github Action Workflow
 
 With the above secrets in place, we can now create a workflow (mines in [`.github/workflows/deploy.yaml`](https://github.com/rick-roche/azure-static-web-apps-sso/blob/6c95cffac91b8d04aefda1921683e03fda5f51bf/.github/workflows/deploy.yaml)) which
-* specifies some environment variables for names, tags and locations
-* checks out the repo
-* logs into Azure using `${{ secrets.AZURE_CREDENTIALS }}`
-* deploys to the resource group using the [`azure/CLI@v1` action](https://github.com/marketplace/actions/azure-cli-action)
-* gets the API from the deployed static web app (so that we can deploy code to it)
-* deploys the webapp using the [`Azure/static-web-apps-deploy@v1` action](https://github.com/Azure/static-web-apps-deploy)
+
+- specifies some environment variables for names, tags and locations
+- checks out the repo
+- logs into Azure using `${{ secrets.AZURE_CREDENTIALS }}`
+- deploys to the resource group using the [`azure/CLI@v1` action](https://github.com/marketplace/actions/azure-cli-action)
+- gets the API from the deployed static web app (so that we can deploy code to it)
+- deploys the webapp using the [`Azure/static-web-apps-deploy@v1` action](https://github.com/Azure/static-web-apps-deploy)
 
 See the full workflow below.
 
@@ -209,10 +215,10 @@ on:
       - main
 
 env:
-  RESOURCE_GROUP: 'rg-swa-sso'
+  RESOURCE_GROUP: "rg-swa-sso"
   RESOURCE_TAGS: '{"owner":"rick.roche", "app":"azure-swa-sso", "repo":"https://github.com/rick-roche/azure-static-web-apps-sso" }'
-  APP_NAME: 'swa-sso'
-  LOCATION: 'westeurope'
+  APP_NAME: "swa-sso"
+  LOCATION: "westeurope"
 
 jobs:
   deploy-infra:
@@ -223,7 +229,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: "16"
 
       - name: Azure Login
         uses: azure/login@v1
@@ -262,16 +268,16 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ steps.static_web_app_apikey.outputs.APIKEY }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-          action: 'upload'
+          action: "upload"
           # Build configuration for Azure Static Web Apps: https://aka.ms/swaworkflowconfig
-          app_location: 'webapp'
-          api_location: ''
-          output_location: 'build' # relative to app_location
+          app_location: "webapp"
+          api_location: ""
+          output_location: "build" # relative to app_location
 ```
 
 ## Finalising auth
 
-At this stage you should have a GitHub workflow successfully deploying a Static Web App and a Key Vault to you resource group. You should also be able to browse to your web app using the generated URL (navigate into the Static Web App from the portal, and you will see your URL on the overview tab. e.g. https://gray-wave-03fb32a03.1.azurestaticapps.net).
+At this stage you should have a GitHub workflow successfully deploying a Static Web App and a Key Vault to you resource group. You should also be able to browse to your web app using the generated URL (navigate into the Static Web App from the portal, and you will see your URL on the overview tab. e.g. [https://gray-wave-03fb32a03.1.azurestaticapps.net](https://gray-wave-03fb32a03.1.azurestaticapps.net)).
 
 ![Static Web App Overview](screenshot-azure-swa-overview.png "Static Web App Overview")
 
@@ -280,9 +286,10 @@ Your app won't ask you to authenticate just yet!
 {{< /admonition >}}
 
 To enable auth our next steps will be to
-* create an AAD app registration
-* add it's client ID and secret as secrets in your key vault
-* configure the static web app to auto log you in if you aren't already or your token has expired
+
+- create an AAD app registration
+- add it's client ID and secret as secrets in your key vault
+- configure the static web app to auto log you in if you aren't already or your token has expired
 
 ### AAD App Registration
 
@@ -309,8 +316,9 @@ Copy the value of the secret as well as the `Application (client) ID` of the AAD
 ### Setup Key Vault Secrets
 
 Once again, I've used the portal for this tutorial. You can follow the [guide here](https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) setting two secrets in your vault
-* `aadClientId` - this should be set to the Application (client) ID of your app registration
-* `aadClientSecret` - this should be set to the value of the application secret created above
+
+- `aadClientId` - this should be set to the Application (client) ID of your app registration
+- `aadClientSecret` - this should be set to the value of the application secret created above
 
 ### Configuring the Static Web App
 
@@ -318,7 +326,8 @@ Configuration for Azure Static Web Apps is defined in the [`staticwebapp.config.
 
 I've put mine in the [root of the webapp folder](https://github.com/rick-roche/azure-static-web-apps-sso/blob/main/webapp/staticwebapp.config.json) and set it to do the following to enable the auto-login SSO magic
 
-* enable custom `auth` with [Azure Active Directory Version 2](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad#azure-active-directory-version-2) using the app settings references from earlier (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
+- enable custom `auth` with [Azure Active Directory Version 2](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad#azure-active-directory-version-2) using the app settings references from earlier (`AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`)
+
   ```json
   "auth": {
     "identityProviders": {
@@ -333,15 +342,18 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
   },
   ```
 
-* a [`navigationFallback` route](https://docs.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes) to `index.html`
+- a [`navigationFallback` route](https://docs.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes) to `index.html`
+
   ```json
   "navigationFallback": {
     "rewrite": "index.html"
   },
   ```
 
-* specific rules for the apps `routes`
-  * creates a `/login` route redirecting to AAD allowing anonymous access
+- specific rules for the apps `routes`
+
+  - creates a `/login` route redirecting to AAD allowing anonymous access
+
     ```json
     {
       "route": "/login",
@@ -350,7 +362,8 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
     },
     ```
 
-  * [blocks all providers except AAD](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-authorization?tabs=invitations#block-an-authentication-provider)
+  - [blocks all providers except AAD](https://docs.microsoft.com/en-us/azure/static-web-apps/authentication-authorization?tabs=invitations#block-an-authentication-provider)
+
     ```json
     {
       "route": "/.auth/login/github",
@@ -362,7 +375,8 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
     },
     ```
 
-  * creates a `/logout` route redirecting to AAD allowing anonymous access
+  - creates a `/logout` route redirecting to AAD allowing anonymous access
+
     ```json
     {
       "route": "/logout",
@@ -371,7 +385,8 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
     },
     ```
 
-  * enforces auth for all other routes (`/*`)
+  - enforces auth for all other routes (`/*`)
+
     ```json
     {
       "route": "/*",
@@ -379,15 +394,16 @@ I've put mine in the [root of the webapp folder](https://github.com/rick-roche/a
     }
     ```
 
-* sets up a response override that if an unauthenticated user hits a page, they should be redirected to the `/login` route
-    ```json
-    "responseOverrides": {
-      "401": {
-        "redirect": "/login",
-        "statusCode": 302
-      }
+- sets up a response override that if an unauthenticated user hits a page, they should be redirected to the `/login` route
+
+  ```json
+  "responseOverrides": {
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
     }
-    ```
+  }
+  ```
 
 The combination of all of the above means that anyone accessing the site that isn't logged in will be routed to the `/login` route which will ensure that the AAD auth flow is completed!
 

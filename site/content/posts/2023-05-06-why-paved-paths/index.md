@@ -31,14 +31,14 @@ lightgallery: false
 
 {{< admonition type=info title="Paved Path Series" open=true >}}
 This is Part 3 in a series of posts exploring Paved Paths between [Chris](https://christaceygreen.com/) and I.
+
 - [Part 1 - Let's Talk About Paved Paths](https://www.rickroche.com/2023/04/paved-paths-series-part-1-lets-talk-about-paved-paths/)
 - [Part 2 - Paved Paths: A One Pager](https://christaceygreen.com/blog/paved-paths-series-part-2-a-one-pager)
 - [Part 4 - The Anatomy of Paved Paths](https://christaceygreen.com/blog/paved-paths-series-part-4-the-anatomy-of-paved-paths)
 - Part 5 - The Spectrum of Platform Engineering and Paved Paths - Coming soon!
-{{< /admonition >}}
+  {{< /admonition >}}
 
 In this post we explore why organisations should care about paved paths.
-
 
 ## What problems do paved paths solve?
 
@@ -68,12 +68,12 @@ So how do you know you've reached the size or shape where paved paths are going 
 
 {{< admonition type=note title="Let's talk money" open=true >}}
 Commercially, why do we care? Well, for a second let's ignore employee satisfaction and focus on our clients. We want to deliver great quality features to them, quickly. Our clients don't care about paved paths, they just want to see an incredible product with continuously improving and evolving feature sets. And with the rate that the technical landscape is changing right now, our products need to be able to iterate extremely quickly. To achieve this, our organisations should optimise for fast flow. We need to reduce the time it takes to go from "Hey, I've got an idea..." to "It's live!". This is what Paved Paths are designed for. They remove the weeks of debate, design (and possible disaster) from our delivery path and empower teams to experiment with and deploy features quickly.
-***Great ideas + Fast flow = $$$***
+**_Great ideas + Fast flow = $$$_**
 {{< /admonition >}}
 
 Paved Paths provide a codified home for all of your learnt best practices, for the things you want to standardise on, for ensuring that things like security, observability and other common components are baked into solutions and only need to be solved once. They also need to be constantly evolving and the usage of them becomes a necessary feedback loop.
 
-In modernisation projects that we've worked on before, there have always been reference implementations built that aim to show teams how something could work. They do provide *some* value. Teams can happily find them, copy-paste, and pick apart to suit their use case. The trouble with reference implementations is that they are generally only good for a specific point in time. If we were to breathe life into all of our documentation, reference implementations and written standards (with a bias towards enabling fast flow) we would start to get the essence of Paved Paths.
+In modernisation projects that we've worked on before, there have always been reference implementations built that aim to show teams how something could work. They do provide _some_ value. Teams can happily find them, copy-paste, and pick apart to suit their use case. The trouble with reference implementations is that they are generally only good for a specific point in time. If we were to breathe life into all of our documentation, reference implementations and written standards (with a bias towards enabling fast flow) we would start to get the essence of Paved Paths.
 
 Paved paths are more than reference implementations, they are the building blocks in any internal developer platform - empowering teams to get up and running using well-understood design patterns with tried and tested technologies. They aim to provide a standardised experience that solves for common use cases, covering infrastructure, applications and operations.
 
@@ -83,12 +83,14 @@ Make this a rule: **if standards aren't part of your paved paths, they don't exi
 {{< /admonition >}}
 
 Invest in paved paths if you would like
+
 - To make doing the "right thing" also the easiest thing, enabling clean architecture
 - To increase team autonomy while reducing cognitive load
 - To provide self-service, composable building blocks
 - To solve common problems once that the 80% are going to experience
 
 Additionally,
+
 - They should be optional for teams to use, to enable experimentation where appropriate
 - They are designed to provide the best user experience for engineers (DX)
 - They should be secure by design
