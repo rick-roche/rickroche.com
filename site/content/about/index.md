@@ -5,7 +5,7 @@ aliases: ["about-me", "contact"]
 ---
 
 <div class="about-side">
-<img src="full-profile.jpg" alt="Profile picture">
+<img src="full-profile.png" alt="Profile picture">
 </div>
 
 <div class="about-main">
